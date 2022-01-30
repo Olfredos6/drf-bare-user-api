@@ -130,8 +130,4 @@ dmypy.json
 
 
 # Custom
-# django-service/usermanagement/core/migrations/*
-# !django-service/usermanagement/core/migrations/__init__.py
-# !django-service/usermanagement/core/migrations/0001_*
-# django-service/usermanagement/core/migrations/0001_*
-# django-service/usermanagement/usermanagement/settings.py
+services/api/core/migrations/0*
