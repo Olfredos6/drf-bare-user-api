@@ -119,7 +119,6 @@ venv.bak/
 
 # mkdocs documentation
 /site
-    ````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 # mypy
 .mypy_cache/
 .dmypy.json
@@ -130,4 +129,6 @@ dmypy.json
 
 
 # Custom
-services/api/core/migrations/0*
+services/api-postgres/*
+services/api/core/migrations/*
+!services/api/core/migrations/*_postgres*
