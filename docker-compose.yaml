@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  api-postgres:
+    image: postgres:14.1
+    restart: always
+    env_file: .env
+    volumes:
+      - "./services/api-postgres:/var/lib/postgresql/data"
+
+  django:
+    build: "./services/api"
+    env_file: .env
+    ports:
+    - "3000:3000"
+    volumes:
+      - "./services/api:/app"
+    # command: bash -c 'python manage.py makemigrations && python manage.py migrate && ../wait-for-it.sh  postgres:5432  -t  60  --strict -- gunicorn --bind :3000 --workers 3 --reload usermanagement.wsgi:application'
+    command: bash -c 'python manage.py makemigrations && python manage.py migrate core && python manage.py migrate && ../wait-for-it.sh  api-postgres:5432  -t  60  --strict -- gunicorn --bind :3000 --workers 3 --reload usersapi.wsgi:application'
+    # command: dir -al
